@@ -59,7 +59,7 @@ git url: 'https://github.com/thakare-priyanka/jenkins-node-app', branch: 'main'
                     bat 'docker save node-app -o node-app.tar'
  
                     // Send image to EC2 (use your actual path and IP)
-                    bat 'pscp -i "C:\Users\pripandh\Downloads\node-app-key.ppk" node-app.tar ec2-user@54.145.9.179:/home/ec2-user/'
+                    bat 'pscp -i "C:/Users/pripandh/Downloads/node-app-key.ppk" node-app.tar ec2-user@54.145.9.179:/home/ec2-user/'
  
                     // SSH into EC2 and deploy container
                     bat '''
