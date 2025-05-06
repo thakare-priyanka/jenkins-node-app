@@ -49,28 +49,28 @@ git url: 'https://github.com/thakare-priyanka/jenkins-node-app', branch: 'main'
             }
         }
  
-        // stage('Docker Build and Deploy to EC2') {
-        //     steps {
-        //         script {
-        //             // Build Docker image
-        //             bat 'docker build -t node-app .'
+        stage('Docker Build and Deploy to EC2') {
+            steps {
+                script {
+                    // Build Docker image
+                    bat 'docker build -t node-app .'
  
-        //             // Save Docker image as tar
-        //             bat 'docker save node-app -o node-app.tar'
+                    // Save Docker image as tar
+                    bat 'docker save node-app -o node-app.tar'
  
-        //             // Send image to EC2 (use your actual path and IP)
-        //             bat 'pscp -i "C:\\Users\\pripandh\\Desktop\\your-key.ppk" node-app.tar ubuntu@<EC2-IP>:/home/ubuntu/'
+                    // Send image to EC2 (use your actual path and IP)
+                    bat 'pscp -i "C:\Users\pripandh\Downloads\node-app-key.ppk" node-app.tar ec2-user@54.145.9.179:/home/ec2-user/'
  
-        //             // SSH into EC2 and deploy container
-        //             bat '''
-        //             plink -i "C:\\Users\\your-username\\Desktop\\your-key.ppk" ubuntu@<EC2-IP> ^
-        //             "docker load < node-app.tar && ^
-        //             docker stop node-app || true && ^
-        //             docker rm node-app || true && ^
-        //             docker run -d -p 3000:3000 --name node-app node-app"
-        //             '''
-        //         }
-        //     }
-        // }
+                    // SSH into EC2 and deploy container
+                    bat '''
+                    plink -i "C:\Users\pripandh\Downloads\node-app-key.ppk" ec2-user@<54.145.9.179> ^
+                    "docker load < node-app.tar && ^
+                    docker stop node-app || true && ^
+                    docker rm node-app || true && ^
+                    docker run -d -p 3000:3000 --name node-app node-app"
+                    '''
+                }
+            }
+        }
     }
 }
