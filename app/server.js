@@ -1,7 +1,7 @@
 const http = require('http');
  
 const server = http.createServer((req, res) => {
-  res.end('Hello from Node app!');
+  res.end('Hello from Node app on EC2!');
 });
  
 server.listen(3000, () => {
