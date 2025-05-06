@@ -63,7 +63,7 @@ git url: 'https://github.com/thakare-priyanka/jenkins-node-app', branch: 'main'
  
                     // SSH into EC2 and deploy container
                     bat '''
-                    plink -i "C:\Users\pripandh\Downloads\node-app-key.ppk" ec2-user@<54.145.9.179> ^
+                    plink -i "C:/Users/pripandh/Downloads/node-app-key.ppk" ec2-user@<54.145.9.179> ^
                     "docker load < node-app.tar && ^
                     docker stop node-app || true && ^
                     docker rm node-app || true && ^
